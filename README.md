@@ -1,4 +1,4 @@
-# Memory Estimation to Fine-Tune Pre-Trained LLMs on Multiple GPUs
+# LLMem: GPU Memory Estimation for Fine-Tuning Pre-Trained LLMs
 
 Our source code is based on an efficient AI-model training system (https://github.com/hpcaitech/ColossalAI). \
 The models used are [facebook/opt](https://huggingface.co/docs/transformers/model_doc/opt), [bigscience/bloom](https://huggingface.co/docs/transformers/model_doc/bloom), [Salesforce/codegen](https://huggingface.co/docs/transformers/model_doc/codegen), [microsoft/biogpt](https://huggingface.co/docs/transformers/model_doc/biogpt), [bigcode/gpt_bigcode-santacoder](https://huggingface.co/docs/transformers/model_doc/gpt_bigcode), and [EleutherAI/gpt-neo](https://huggingface.co/docs/transformers/model_doc/gpt_neo). \
