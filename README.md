@@ -17,8 +17,8 @@ Fine-tuning pre-trained LLMs with limited hardware faces memory constraints. Sev
 6. sudo apt-get update
 7. sudo apt-get -y install cuda
 8. In ~/.bashrc, \
-      export CUDA_HOME=/usr/local/cuda
-      export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH
+      export CUDA_HOME=/usr/local/cuda \
+      export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH \
       export PATH=$PATH:$CUDA_HOME/bin
 9. source ~/.bashrc
 10. (Check if it works) nvidia-smi, nvcc --version
