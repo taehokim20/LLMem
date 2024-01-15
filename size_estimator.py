@@ -267,21 +267,21 @@ class SizeEstimator(object):
 
             total_mem += (self.param_bytes + self.input_bytes + total_bytes + last_part) / (1024**2)
 
-            ####################################################
-            import torch.distributed as dist
-            if dist.get_rank() == 0:
-                with open('temp_size.txt', 'a') as f:
-                    # f.write('{}: {}\n'.format(cur_bs, total_mem))
-                    f.write('{}\n'.format(total_mem))
-            ####################################################
+            # ####################################################
+            # import torch.distributed as dist
+            # if dist.get_rank() == 0:
+            #     with open('temp_size.txt', 'a') as f:
+            #         # f.write('{}: {}\n'.format(cur_bs, total_mem))
+            #         f.write('{}\n'.format(total_mem))
+            # ####################################################
                     
-            # if total_mem > self.m_total:
-            #     self.real_bs = cur_bs - 1
-            #     if last_total_mem == 0:
-            #         return total_mem
-            #     return last_total_mem
-            if cur_bs > 80:
+            if total_mem > self.m_total:
+                self.real_bs = cur_bs - 1
+                if last_total_mem == 0:
+                    return total_mem
                 return last_total_mem
+            # if cur_bs > 80:
+            #     return last_total_mem
             
             cur_bs += 1
             last_total_mem = total_mem
