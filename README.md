@@ -5,7 +5,7 @@ The models used are [facebook/opt](https://huggingface.co/docs/transformers/mode
 The dataset used is alpaca data (https://github.com/tatsu-lab/stanford_alpaca), which is 52K instruction-following data.
 
 # Abstract
-Fine-tuning pre-trained LLMs with limited hardware faces memory constraints. Several distributed fine-tuning methods have been proposed to alleviate memory constraints. However, we do not know which method is the best for fast fine-tuning while avoiding out-of-memory in a given environment. We propose \systemName\ that estimates the memory consumption when applying distributed fine-tuning methods to multiple GPUs and informs the optimal method and batch size. We complete the memory estimation before fine-tuning based on the basic structure of transformer-based decoder models and the memory usage distribution of each method. The experimental results show that \systemName\ can select the optimal method based on the memory estimation results.
+Fine-tuning pre-trained LLMs with limited hardware faces memory constraints. Several distributed fine-tuning methods have been proposed to alleviate memory constraints. However, we do not know which method is the best for fast fine-tuning while avoiding out-of-memory in a given environment. We propose LLMem, which estimates the memory consumption when applying distributed fine-tuning methods to multiple GPUs and informs the optimal method and batch size. We complete the memory estimation before fine-tuning based on the basic structure of transformer-based decoder models and the memory usage distribution of each method. The experimental results show that LLMem estimates peak GPU memory on a single GPU with error rates of up to 1.6\%. In addition, when applying distributed fine-tuning methods to LLMs with more than a billion parameters on multiple GPUs, it shows an average error rate of 3.0\%.
 
 # How to set up
 ## cuda-11.7
@@ -51,15 +51,10 @@ Fine-tuning pre-trained LLMs with limited hardware faces memory constraints. Sev
 4. pip install --upgrade accelerate
 
 ## How to run
-### Measure real mem 1
+### Measure ground truth
 1. Change the model from ~/anaconda3/envs/colo201/lib/python3.10/site-packages/transformers/models/xxx/yyy.py to ./real1_models/yyy.py
-2. For DP, run bash run_colo.sh after changing the number of nodes, model name, per_device_train_batch_size with dp_real1.py
-3. For TP or DP+TP, tp_real1.py also follows the similar process. but it requires to change tp_size in tp_real1.py \
-   For example, the number of nodes = 2 and tp_size = 2 -> 2DP, the number of nodes = 4 and tp_size = 2 -> 2DP+2TP.
-### Measure real mem 2
-1. Change the model from ~/anaconda3/envs/colo201/lib/python3.10/site-packages/transformers/models/xxx/yyy.py to ./real2_models/yyy.py
-2. For DP, run bash run_colo.sh after changing the number of nodes, model name, per_device_train_batch_size with dp_real2.py
-3. For TP or DP+TP, tp_real1.py also follows the similar process. but it requires to change tp_size in tp_real2.py \
+2. For DP, run bash run_colo.sh after changing the number of nodes, model name, per_device_train_batch_size with dp_real.py
+3. For TP or DP+TP, tp_real1.py also follows the similar process. but it requires to change tp_size in tp_real.py \
    For example, the number of nodes = 2 and tp_size = 2 -> 2DP, the number of nodes = 4 and tp_size = 2 -> 2DP+2TP.
 ### Estimate peak GPU memory
 1. Use the original model, not including the GPU memory measurement part
