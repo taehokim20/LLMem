@@ -98,7 +98,7 @@ def train_epoch(epoch, model, optimizer, lr_scheduler, dataloader, booster, coor
                 with open(txt_file_name, 'a') as f:
                     f.write('[cuda:{} - {}]: {} -> {} -> {} -> {}\n'.format(local_rank, cnt, a, b, c, d))
             cnt += 1
-            if cnt > 8:
+            if cnt > 2:
                 break
             
     # if dist.get_rank() == 0:

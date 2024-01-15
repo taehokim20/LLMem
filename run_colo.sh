@@ -12,8 +12,8 @@ export WANDB_MODE=offline
 # EleutherAI/gpt-neo-1.3B
 # bert-base-uncased bert-large-uncased
 # prev: --learning_Rate 1e-5, --per_device_train_batch_size 8 --gradient_accumulation_steps 16
-torchrun --nproc_per_node 1 dp_real1.py \
-    --model_name_or_path bigscience/bloom-560m \
+torchrun --nproc_per_node 1 dp_real.py \
+    --model_name_or_path facebook/opt-125m \
     --data_path ./alpaca_data.json \
     --output_dir ./trained/no.pt \
     --num_train_epochs 1 \
