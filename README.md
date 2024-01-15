@@ -41,7 +41,7 @@ Fine-tuning pre-trained LLMs with limited hardware faces memory constraints. Sev
 1. git clone https://github.com/hpcaitech/ColossalAI.git
 2. cd ColossalAI/
 3. git reset --hard d4fb7bfda7a2da5480e1187e8d3e40884b42ba11
-4. cp -r ../LLMMem/colossalai .
+4. cp -r ../LLMem/colossalai .
 5. pip install .
 
 ## Others
