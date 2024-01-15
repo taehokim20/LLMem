@@ -51,6 +51,9 @@ Fine-tuning pre-trained LLMs with limited hardware faces memory constraints. Sev
 4. pip install --upgrade accelerate
 
 ## How to run
+1. In the LLMem directory, move the stuff to the ColossalAI directory \
+         cp *.py run_colo.sh alpaca_data.json ../ColossalAI/
+3. cd ../ColossalAI
 ### Measure ground truth
 1. Change the model from ~/anaconda3/envs/colo201/lib/python3.10/site-packages/transformers/models/xxx/yyy.py to ./real_models/yyy.py
 2. For DP, run bash run_colo.sh after changing the number of nodes, model name, per_device_train_batch_size with dp_real.py
