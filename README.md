@@ -59,6 +59,7 @@ Fine-tuning pre-trained LLMs with limited hardware faces memory constraints. Sev
 2. For DP, run bash run_colo.sh after changing the number of nodes, model name, per_device_train_batch_size with dp_real.py
 3. For TP or DP+TP, tp_real.py also follows the similar process. but it requires to change tp_size in tp_real.py \
    For example, the number of nodes = 2 and tp_size = 2 -> 2DP, the number of nodes = 4 and tp_size = 2 -> 2DP+2TP.
+*For the ground truth, you should add (the measured GPU memory by nvml - the memory by GPUtil) to the peak GPU memory.
 ### Estimate peak GPU memory
 1. Use the original model, not including the GPU memory measurement part
 2. Set up the values in run_colo.sh and tp_size in tp_real.py (if you are applying tensor parallelism)
